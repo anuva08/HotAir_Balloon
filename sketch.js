@@ -29,28 +29,32 @@ function setup() {
 function draw() {
   background(bg);
   if(position!== undefined){
-  if(keyDown(LEFT_ARROW)){
+  if(keyDown(LEFT_ARROW)&& balloon.x > 50){
     //write code to move air balloon in left direction
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     writePosition(-1,0);
     
   }
-  else if(keyDown(RIGHT_ARROW)){
+  else if(keyDown(RIGHT_ARROW)&& balloon.x<1450){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in right direction
     writePosition(1,0);
   }
-  else if(keyDown(UP_ARROW)&& balloon.scale>0.1){
+  else if(keyDown(UP_ARROW)&& balloon.y>10){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in up direction
     writePosition(0,-1);
+    if( balloon.scale>0.1){
     balloon.scale = balloon.scale - 0.01;
+    }
   }
-  else if(keyDown(DOWN_ARROW) && balloon.scale<1.2){
+  else if(keyDown(DOWN_ARROW)&& balloon.y<600){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in down direction
     writePosition(0,1);
+    if( balloon.scale<1){
     balloon.scale = balloon.scale+0.01;
+    }
   }
 }
   drawSprites();
